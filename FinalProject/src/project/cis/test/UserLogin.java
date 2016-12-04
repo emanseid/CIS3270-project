@@ -4,8 +4,37 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import java.sql.*;
 
 public class UserLogin extends JFrame {
+	// Initializing database elements
+	Connection con;
+	Statement loginStmt;
+	ResultSet rs;
+	String url = "jdbc:mysql://localhost:3306/demo";
+	tring user = "root";
+	String password = "root";
+	
+	public login(){
+		
+		try{
+			// Connection to the database
+			Connection con = DriverManager.getConnection(url,user,password);
+			// Create a statement
+			Statement loginStmt = myConn.createStatement();
+			// Insert to database
+			String sql = "insert into login "
+					+ " (username, password)"
+					+ " values (username, password)";
+			// Inserting into database
+			myStmt.executeUpdate(sql);
+			
+		}catch(Exception e){
+			System.out.println(e.getMessage);
+		}
+	}
+	
+	
 	//Create Font
 	Font myFont = new Font("Monospaced",Font.PLAIN, 20);
   // Create text fields for username, password
