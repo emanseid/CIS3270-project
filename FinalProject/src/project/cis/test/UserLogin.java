@@ -3,16 +3,15 @@ package project.cis.test;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import java.sql.*;
 
-public class UserLogin extends JFrame {
+
+public class UserLogin extends JFrame{
 	// Initializing database elements
 	Connection con;
 	Statement loginStmt;
 	ResultSet rs;
 	String url = "jdbc:mysql://localhost:3306/demo";
-	tring user = "root";
+	String user = "root";
 	String password = "root";
 	
 	public login(){
@@ -33,17 +32,16 @@ public class UserLogin extends JFrame {
 			System.out.println(e.getMessage);
 		}
 	}
-	
-	
 	//Create Font
 	Font myFont = new Font("Monospaced",Font.PLAIN, 20);
-  // Create text fields for username, password
+  // Create text fields for main menu
   private JTextField jtfUsername = new JTextField();
   private JTextField jtfPassword = new JTextField();
 
   // Create login, register buttons
   private JButton login = new JButton("Login");
   private JButton register = new JButton("Register");
+
   
   public UserLogin() {
     // Panel p1 to hold labels and text fields
@@ -65,20 +63,38 @@ public class UserLogin extends JFrame {
     add(p2, BorderLayout.SOUTH);
 
     // Register listener
-    login.addActionListener(new ButtonListener());
+    login.addActionListener(new LoginListener());
+    register.addActionListener(new RegisterListener());
   }
 
   /** Handle the Login button */
-  private class ButtonListener implements ActionListener {
+  private class LoginListener implements ActionListener {
     @Override 
     public void actionPerformed(ActionEvent e) {
       // Get values from text fields
       String username = jtfUsername.getText();
       String password = jtfPassword.getText();
       
-      // JACK: check database to see if entered username and password are in the database
-      //I will write code to display exception for incorrect password at some point
+      // JACK: check database to see if entered username and password are in the database & correct
+      //I will write the GUI for that
+      
     }
+  }
+  private class RegisterListener implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		//create new jframe, close main menu
+		NewUserRegistration registration = new NewUserRegistration();
+		registration.setVisible(true);
+		registration.pack();
+		registration.setSize(1000, 350);
+	    registration.setTitle("Java JEB Airlines");
+	    registration.setLocationRelativeTo(null); // Center the frame
+	    registration.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dispose();
+		
+	}
   }
   
   public static void main(String[] args) {
