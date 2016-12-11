@@ -3,40 +3,19 @@ package project.cis.test;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.sql.*;
 
 
 public class UserLogin extends JFrame{
-	// Initializing database elements
-	Connection con;
-	Statement loginStmt;
-	ResultSet rs;
-	String url = "jdbc:mysql://localhost:3306/demo";
-	String user = "root";
-	String password = "root";
 	
-	public login(){
-		
-		try{
-			// Connection to the database
-			Connection con = DriverManager.getConnection(url,user,password);
-			// Create a statement
-			Statement loginStmt = myConn.createStatement();
-			// Insert to database
-			String sql = "insert into login "
-					+ " (username, password)"
-					+ " values (username, password)";
-			// Inserting into database
-			myStmt.executeUpdate(sql);
-			
-		}catch(Exception e){
-			System.out.println(e.getMessage);
-		}
-	}
 	//Create Font
 	Font myFont = new Font("Monospaced",Font.PLAIN, 20);
   // Create text fields for main menu
-  private JTextField jtfUsername = new JTextField();
-  private JTextField jtfPassword = new JTextField();
+ // private JTextField jtfUsername = new JTextField();  Brooke's Original Code
+  //private JTextField jtfPassword = new JTextField();  Brooke's Original Code
+	
+	private JTextField jtfUsername = new JTextField(10); // New Username added by Jack
+	private JPasswordField jtfPassword new JPasswordField(10); // New Password field added by Jack
 
   // Create login, register buttons
   private JButton login = new JButton("Login");
@@ -77,6 +56,17 @@ public class UserLogin extends JFrame{
       
       // JACK: check database to see if entered username and password are in the database & correct
       //I will write the GUI for that
+      Database db;
+      
+      if(db.checkLogin(username,password)){
+    	  // Login successful popup
+    	  JOptionPane.showMessageDialog(null,"Login Successful!","Login Successful",JOptionPane.INFORMATION_MESSAGE);
+      }
+      else{
+    	  // Login unsuccessful popup
+    	  JOptionPane.showMessageDialog(null,"Login Failed!","Login Failed",JOptionPane.ERROR_MESSAGE);
+      }
+      
       
     }
   }
