@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import project.cis.test.CheckPassword;
 
 
 
@@ -84,34 +83,31 @@ public class NewUserRegistration extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			String firstName = jtfFirst.getText();
 			String lastName = jtfLast.getText();
+			String email = jtfEmail.getText(); //Check
 			String address = jtfAddress.getText();
-			String email = jtfEmail.getText();
-			String zip = jtfZip.getText(); 
-			String state = jtfState.getText();
+			String zip = jtfZip.getText(); //Check
+			String state = jtfState.getText(); //Check
 			String username = jtfNewUsername.getText(); //Check DB JACK :)
-			String password = jtfNewPassword.getText();
+			String password = jtfNewPassword.getText(); //Check
 			String securityQ = jtfSecurityQ.getText(); 
 			String securityA = jtfSecurityA.getText();
-			String SSN = jtfSSN.getText(); 
-			//if username in system
+			String SSN = jtfSSN.getText(); //Check
 			
-			if(checkEmail(email)){System.out.println("valid email");}
-			else{System.out.println("Email invalid");}
+//if username in system
 			
-			if(checkZip(zip)){
-				System.out.println("validzip");
-			}else{System.out.println("Zip code invalid");}
+			if(checkEmail(email)){}
+			else{JOptionPane.showMessageDialog(null,"Email invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
 			
-			if(checkState(state)){
-				System.out.println("Validstate");
-			}else{System.out.println("State invalid");}
+			if(checkZip(zip)){}
+			else{JOptionPane.showMessageDialog(null,"Zip Code invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
 			
-			if(checkPassword(password)){
-				System.out.println("Valid password");
-			}else{System.out.println("Password must be at least 8 characters, no special characters");}
-			if(checkSSN(SSN)){
-				System.out.println("Valid SSN");
-			}else{System.out.println("SSN invalid");}
+			if(checkState(state)){}
+			else{JOptionPane.showMessageDialog(null,"State invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
+			
+			if(checkPassword(password)){}
+			else{JOptionPane.showMessageDialog(null,"Password must be more than 8 characters \nNo special characters","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
+			if(checkSSN(SSN)){}
+			else{JOptionPane.showMessageDialog(null,"SSN invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
 		}
 		public boolean checkEmail(String email){
 			String email1 = jtfEmail.getText();
@@ -209,7 +205,9 @@ public class NewUserRegistration extends JFrame {
 				return true;
 			}else{return false;}
 		}
-	}
+		}
+		
+	
 	 public static void main(String[] args) {
 			NewUserRegistration frame = new NewUserRegistration();
 			frame.pack();
