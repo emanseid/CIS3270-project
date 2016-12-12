@@ -3,8 +3,10 @@ package project.cis3270.searchflight;
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.*;
+import java.awt.event.*;
 
-public class Booking {
+public class Booking extends JPanel implements ActionListener{
 	// Main Window
 	static JFrame fr;
 	GridBagLayout gl;
@@ -14,7 +16,7 @@ public class Booking {
 			lblClassId, lblNoOfSeats, lblTotalAmount, lblCaption;
 	// dropdown List
 	JComboBox cbPassengerId, cbFlightId, cbClassId;
-	// values which will be assigned to a dropdownlist
+	// Jack ids from the database
 	String[] passengerId = { "1", "2", "3", "4", "5" };
 	String[] flightId = { "1", "2", "3" };
 	String[] classId = { "1", "2", "3" };
@@ -61,8 +63,9 @@ public class Booking {
 		gc.insets = new Insets(20, 20, 5, 5);
 
 		// adding the panel to a frame
-		fr.getContentPane().add(panel);
+		//fr.getContentPane().add(panel);
 		// adding the controls to a panel
+		this.add(panel);
 		panel.setLayout(gl);
 		gc.gridx = 0;
 		gc.gridy = 0;
@@ -93,6 +96,7 @@ public class Booking {
 		addItem(panel, txtTotalAmount, 1, 11, 10, 1, GridBagConstraints.WEST);
 		addItem(panel, button1, 1, 12, 1, 1, GridBagConstraints.NORTH);
 		addItem(panel, button2, 2, 12, 1, 1, GridBagConstraints.NORTH);
+		button1.addActionListener(this);
 	}
 
 	private void addItem(JPanel p, JComponent c, int x, int y, int width, int height, int align) {
@@ -104,12 +108,23 @@ public class Booking {
 		p.add(c, gc);
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Booking obj = new Booking();
 		// show the frame
 		fr.setVisible(true);
 		// set the size of the frame
 		fr.setSize(300, 400);
-	}
+	}*/
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == button1) {
+			
+			Ticket2 obj = new Ticket2();
+			obj.showTicketing();
+			fr.setVisible(false);
+			fr.dispose();
+			
+		}
+	}	
+			
 
 }
