@@ -7,7 +7,7 @@ public class MainMenu extends UserLogin implements ActionListener {
 	JPanel panel;
 	 JMenuBar mb;
 	 JMenu m;
-	 JMenuItem  Login,Register;
+	 JMenuItem  Login;
 	 
 	public MainMenu(){ 
 	 fr = new JFrame();
@@ -19,7 +19,7 @@ public class MainMenu extends UserLogin implements ActionListener {
 	
 	
 	 Login = new JMenuItem("Login");
-	 Register=new JMenuItem("Register");
+	 
 	
 	 //creating a panel
 	 panel = new JPanel();
@@ -31,11 +31,11 @@ public class MainMenu extends UserLogin implements ActionListener {
 	
 	 m.add(Login);
 	
-	 m.add(Register);
+	 
 	 
 	 
 	 Login.addActionListener(this);
-	 Register.addActionListener(this);}
+	 }
 	
 	 public void actionPerformed(ActionEvent e1) {
 		 if(e1.getSource() == Login) {
