@@ -1,4 +1,6 @@
-package project.cis.test;
+package project.cis3270.searchflight;
+
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -15,11 +17,11 @@ public class UserLogin extends JFrame{
   //private JTextField jtfPassword = new JTextField();  Brooke's Original Code
 	
 	private JTextField jtfUsername = new JTextField(10); // New Username added by Jack
-	private JPasswordField jtfPassword new JPasswordField(10); // New Password field added by Jack
+	 private JPasswordField jtfPassword =new JPasswordField(10); // New Password field added by Jack
 
   // Create login, register buttons
-  private JButton login = new JButton("Login");
-  private JButton register = new JButton("Register");
+   JButton login = new JButton("Login");
+   JButton register = new JButton("Register");
 
   
   public UserLogin() {
@@ -47,7 +49,7 @@ public class UserLogin extends JFrame{
   }
 
   /** Handle the Login button */
-  private class LoginListener implements ActionListener {
+   class LoginListener implements ActionListener {
     @Override 
     public void actionPerformed(ActionEvent e) {
       // Get values from text fields
@@ -56,21 +58,21 @@ public class UserLogin extends JFrame{
       
       // JACK: check database to see if entered username and password are in the database & correct
       //I will write the GUI for that
-      Database db;
+     // Database db;
       
-      if(db.checkLogin(username,password)){
+     // if(db.checkLogin(username,password)){
     	  // Login successful popup
-    	  JOptionPane.showMessageDialog(null,"Login Successful!","Login Successful",JOptionPane.INFORMATION_MESSAGE);
-      }
-      else{
+    	 // JOptionPane.showMessageDialog(null,"Login Successful!","Login Successful",JOptionPane.INFORMATION_MESSAGE);
+      //}
+     // else{
     	  // Login unsuccessful popup
-    	  JOptionPane.showMessageDialog(null,"Login Failed!","Login Failed",JOptionPane.ERROR_MESSAGE);
-      }
+    	  //JOptionPane.showMessageDialog(null,"Login Failed!","Login Failed",JOptionPane.ERROR_MESSAGE);
+      //}
       
       
     }
   }
-  private class RegisterListener implements ActionListener {
+   class RegisterListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -87,7 +89,7 @@ public class UserLogin extends JFrame{
 	}
   }
   
-  public static void main(String[] args) {
+  /*public static void main(String[] args) {
 	UserLogin frame = new UserLogin();
 	frame.pack();
 	frame.setSize(500, 200);
@@ -95,5 +97,7 @@ public class UserLogin extends JFrame{
     frame.setLocationRelativeTo(null); // Center the frame
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
-  }
+  }*/
 }
+
+
