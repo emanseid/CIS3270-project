@@ -1,4 +1,4 @@
-package project.cis.test;
+package project.cis3270.searchflight;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -11,20 +11,20 @@ public class NewUserRegistration extends JFrame {
 		//Create Font
 		Font myFont = new Font("Monospaced",Font.PLAIN, 20);
 		// Create text fields for registration
-	    private JTextField jtfFirst = new JTextField();
-		private JTextField jtfLast = new JTextField();
-		private JTextField jtfAddress = new JTextField();
-		private JTextField jtfZip = new JTextField();
-		private JTextField jtfState = new JTextField();
-		private JTextField jtfNewUsername = new JTextField();
-		private JTextField jtfNewPassword = new JTextField();
-		private JTextField jtfEmail = new JTextField();
-		private JTextField jtfSSN = new JTextField();
-		private JTextField jtfSecurityQ = new JTextField();
-		private JTextField jtfSecurityA = new JTextField();
+	     JTextField jtfFirst = new JTextField();
+		 JTextField jtfLast = new JTextField();
+		 JTextField jtfAddress = new JTextField();
+		 JTextField jtfZip = new JTextField();
+		 JTextField jtfState = new JTextField();
+		 JTextField jtfNewUsername = new JTextField();
+		 JTextField jtfNewPassword = new JTextField();
+		 JTextField jtfEmail = new JTextField();
+		 JTextField jtfSSN = new JTextField();
+		 JTextField jtfSecurityQ = new JTextField();
+		 JTextField jtfSecurityA = new JTextField();
 		
 		//Create register button
-		private JButton register = new JButton("Register");
+		 JButton register = new JButton("Register");
 		
 	public NewUserRegistration(){
 		// Panel p1 to hold labels and text fields
@@ -77,7 +77,7 @@ public class NewUserRegistration extends JFrame {
 	    // Register listener
 	    register.addActionListener(new NewUserListener());
 	}
-	private class NewUserListener implements ActionListener{
+	 class NewUserListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -208,7 +208,7 @@ public class NewUserRegistration extends JFrame {
 		}
 		
 	
-	 public static void main(String[] args) {
+	/*public static void main(String[] args) {
 			NewUserRegistration frame = new NewUserRegistration();
 			frame.pack();
 			frame.setSize(1000, 350);
@@ -216,5 +216,7 @@ public class NewUserRegistration extends JFrame {
 		    frame.setLocationRelativeTo(null); // Center the frame
 		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    frame.setVisible(true);
-		  }
-}
+		  }*/}
+
+
+
