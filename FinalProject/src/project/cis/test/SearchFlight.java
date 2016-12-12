@@ -1,8 +1,12 @@
 package project.cis3270.searchflight;
 import javax.swing.*;
-import java.awt.*;
 
-public class SearchFlight {
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SearchFlight extends JPanel implements ActionListener {
 	//Main Window
 		static JFrame fr;
 		//Caption
@@ -41,13 +45,14 @@ public class SearchFlight {
 			cbDestination = new JComboBox(destination);
 			cbAdults = new JComboBox(adults);
 			//cbChildrens = new JComboBox(childrens);
-			txtSourceDate = new JTextField(30);
-			txtDestinationDate = new JTextField(40);
+			txtSourceDate = new JTextField(20);
+			txtDestinationDate = new JTextField(20);
 			button = new JButton("Search");
 			
 			//adding the panel to a frame
-			fr.getContentPane().add(panel);
+			//fr.getContentPane().add(panel);
 			//adding the controls to a panel
+			this.add(panel);
 			panel.add(rbOne);
 			panel.add(rbTwo);
 			panel.add(lblFrom);
@@ -63,9 +68,10 @@ public class SearchFlight {
 			//panel.add(lblChildren);
 			//panel.add(cbChildrens);
 			panel.add(button);
+			button.addActionListener(this);
 		}
 		
-		public static void main(String[] args) {
+		/*public static void main(String[] args) {
 			//Jack
 			SearchFlight obj = new SearchFlight();
 			
@@ -73,7 +79,13 @@ public class SearchFlight {
 			fr.setVisible(true);
 			//set the size of the frame
 			fr.setSize(300, 400);
-		}
+		}*/
 
+		public void actionPerformed(ActionEvent e1) {
+			if(e1.getSource() == button) {
+				JOptionPane.showMessageDialog(panel, "Searching");
+			}
+			
+		}
 
 }
