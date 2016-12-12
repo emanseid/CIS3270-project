@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import project.cis.test.CheckPassword;
 
 
 
@@ -83,17 +84,131 @@ public class NewUserRegistration extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			String firstName = jtfFirst.getText();
 			String lastName = jtfLast.getText();
-			String email = jtfEmail.getText(); //Check
 			String address = jtfAddress.getText();
-			String zip = jtfZip.getText(); //Check
-			String state = jtfState.getText(); //Check
+			String email = jtfEmail.getText();
+			String zip = jtfZip.getText(); 
+			String state = jtfState.getText();
 			String username = jtfNewUsername.getText(); //Check DB JACK :)
-			String password = jtfNewPassword.getText(); //Check
+			String password = jtfNewPassword.getText();
 			String securityQ = jtfSecurityQ.getText(); 
 			String securityA = jtfSecurityA.getText();
-			String SSN = jtfSSN.getText(); //Check
+			String SSN = jtfSSN.getText(); 
+			//if username in system
+			
+			if(checkEmail(email)){System.out.println("valid email");}
+			else{System.out.println("Email invalid");}
+			
+			if(checkZip(zip)){
+				System.out.println("validzip");
+			}else{System.out.println("Zip code invalid");}
+			
+			if(checkState(state)){
+				System.out.println("Validstate");
+			}else{System.out.println("State invalid");}
+			
+			if(checkPassword(password)){
+				System.out.println("Valid password");
+			}else{System.out.println("Password must be at least 8 characters, no special characters");}
+			if(checkSSN(SSN)){
+				System.out.println("Valid SSN");
+			}else{System.out.println("SSN invalid");}
 		}
-		
+		public boolean checkEmail(String email){
+			String email1 = jtfEmail.getText();
+			if(email1.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
+				return true;
+			}
+			else{ return false;}
+		}
+		public boolean checkZip(String zip){
+			String zip1 = jtfZip.getText();
+			if(zip1.matches("^[0-9]{5}(?:-[0-9]{4})?$")){
+				return true;
+			}
+			else{ return false;}
+		}
+		public boolean checkState(String state){
+			String state1 = jtfState.getText();
+			String [] stateArray = new String[]{"Alabama","AL",
+					"Alaska","AK",
+					"Arizona","AZ",
+					"Arkansas","AR",
+					"California","CA",
+					"Colorado","CO",
+					"Connecticut","CT",
+					"DELAWARE","DE",
+					"Florida","FL",
+					"Georgia","GA",
+					"Hawaii","HI",
+					"Idaho","ID",
+					"Illinois","IL",
+					"Indiana","IN",
+					"Iowa","IA",
+					"Kansas","KS",
+					"KENTUCKY","KY",
+					"LOUISIANA","LA",
+					"MAINE","ME",
+					"MARYLAND","MD",
+					"MASSACHUSETTS","MA",
+					"MICHIGAN","MI",
+					"MINNESOTA","MN",
+					"MISSISSIPPI","MS",
+					"MISSOURI","MO",
+					"MONTANA","MT",
+					"NEBRASKA","NE",
+					"NEVADA","NV",
+					"NEW HAMPSHIRE","NH",
+					"NEW JERSEY","NJ",
+					"NEW MEXICO","NM",
+					"NEW YORK","NY",
+					"NORTH CAROLINA","NC",
+					"NORTH DAKOTA","ND",
+					"OHIO","OH",
+					"OKLAHOMA","OK",
+					"OREGON","OR",
+					"PENNSYLVANIA","PA",
+					"RHODE ISLAND","RI",
+					"SOUTH CAROLINA","SC",
+					"SOUTH DAKOTA","SD",
+					"TENNESSEE","TN",
+					"TEXAS","TX",
+					"UTAH","UT",
+					"VERMONT","VT",
+					"Virginia","VA",
+					"Washington","WA",
+					"WEST VIRGINIA","WV",
+					"WISCONSIN","WI",
+					"WYOMING","WY"};
+			for(int index = 0; index<stateArray.length; index++){
+				if(stateArray[index].equalsIgnoreCase(state1)){
+					return true;
+				}
+			}
+			return false;
+		}
+		public boolean checkPassword(String password){
+			String password1 = jtfNewPassword.getText();
+			final int minLength = 8;
+			if(password1.length() >= minLength){
+				for(int i = 0; i < password1.length(); i++){
+					char c = password1.charAt(i);
+					if(Character.isAlphabetic(c)){
+						i++;
+						return true;
+					}else if(Character.isDigit(c)){
+						i++;
+						return true;
+					}else{return false;}
+					
+				}
+			}return false;
+		}
+		public boolean checkSSN(String SSN){
+			String SSN1 = jtfSSN.getText();
+			if(SSN1.matches("\\d{3}-\\d{2}-\\d{4}")){
+				return true;
+			}else{return false;}
+		}
 	}
 	 public static void main(String[] args) {
 			NewUserRegistration frame = new NewUserRegistration();
