@@ -1,4 +1,4 @@
-package project.cis3270.searchflight;
+//package project.cis3270.searchflight;
 
 
 
@@ -58,16 +58,16 @@ public class UserLogin extends JFrame{
       
       // JACK: check database to see if entered username and password are in the database & correct
       //I will write the GUI for that
-     // Database db;
+      Database db = new Database();
       
-     // if(db.checkLogin(username,password)){
+      if(db.checkLogin(username,password)){
     	  // Login successful popup
-    	 // JOptionPane.showMessageDialog(null,"Login Successful!","Login Successful",JOptionPane.INFORMATION_MESSAGE);
-      //}
-     // else{
+    	  JOptionPane.showMessageDialog(null,"Login Successful!","Login Successful",JOptionPane.INFORMATION_MESSAGE);
+      }
+      else{
     	  // Login unsuccessful popup
-    	  //JOptionPane.showMessageDialog(null,"Login Failed!","Login Failed",JOptionPane.ERROR_MESSAGE);
-      //}
+    	  JOptionPane.showMessageDialog(null,"Login Failed!","Login Failed",JOptionPane.ERROR_MESSAGE);
+      }
       
       
     }
@@ -89,7 +89,7 @@ public class UserLogin extends JFrame{
 	}
   }
   
-  /*public static void main(String[] args) {
+  public static void main(String[] args) {
 	UserLogin frame = new UserLogin();
 	frame.pack();
 	frame.setSize(500, 200);
@@ -97,7 +97,7 @@ public class UserLogin extends JFrame{
     frame.setLocationRelativeTo(null); // Center the frame
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
-  }*/
+  }
 }
 
 

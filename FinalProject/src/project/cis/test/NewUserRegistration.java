@@ -1,7 +1,13 @@
-package project.cis3270.searchflight;
+//package project.cis3270.searchflight;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -88,10 +94,49 @@ public class NewUserRegistration extends JFrame {
 			String zip = jtfZip.getText(); //Check
 			String state = jtfState.getText(); //Check
 			String username = jtfNewUsername.getText(); //Check DB JACK :)
-			String password = jtfNewPassword.getText(); //Check
+			String userPassword = jtfNewPassword.getText(); //Check
 			String securityQ = jtfSecurityQ.getText(); 
 			String securityA = jtfSecurityA.getText();
 			String SSN = jtfSSN.getText(); //Check
+			
+			
+			//Database
+			
+			Connection con;
+			PreparedStatement pst;
+			ResultSet rs;
+			String url = "jdbc:mysql://localhost:3306/JEB";
+			String user = "root";
+			String password = "root";
+			String query = "INSERT INTO users "
+					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+			try{
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(url,user,password);
+			pst = con.prepareStatement(query);
+			
+			pst.setString(1,username);
+			pst.setString(2, userPassword);
+			pst.setString(3, firstName);
+			pst.setString(4, lastName);
+			pst.setString(5, address);
+			pst.setString(6, zip);
+			pst.setString(7, state);
+			pst.setString(8, email);
+			pst.setString(9, SSN);
+			pst.setString(10, securityQ);
+			pst.setString(11, securityA);
+			pst.executeUpdate();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				
+			   }
+			
+			
+			
 			
 //if username in system
 			
@@ -206,9 +251,11 @@ public class NewUserRegistration extends JFrame {
 			}else{return false;}
 		}
 		}
+	 
+	 
 		
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 			NewUserRegistration frame = new NewUserRegistration();
 			frame.pack();
 			frame.setSize(1000, 350);
@@ -216,7 +263,8 @@ public class NewUserRegistration extends JFrame {
 		    frame.setLocationRelativeTo(null); // Center the frame
 		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    frame.setVisible(true);
-		  }*/}
+		  }
+	}
 
 
 

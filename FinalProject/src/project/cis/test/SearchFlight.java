@@ -1,7 +1,7 @@
-package project.cis3270.searchflight;
+//package project.cis3270.searchflight;
 import javax.swing.*;
 
-
+import java.sql.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,15 +71,75 @@ public class SearchFlight extends JPanel implements ActionListener {
 			button.addActionListener(this);
 		}
 		
-		/*public static void main(String[] args) {
+		
+		
+		
+		
+		
+		public static void SearchDatabase(int sourceid, int destinationid, String departingDate, String time) {
+			// Initialization of database components
+			Connection con;
+			PreparedStatement pst;
+			ResultSet rs;
+			String url = "jdbc:mysql://localhost:3306/JEB";
+			String user = "root";
+			String password = "root";
+			String query = "select * from flight where (sourceid = ? OR = 'EMPTY')"
+					+ "AND (destinationid = ? OR = 'EMPTY') AND (departingDate = ? OR ='EMPTY')"
+					+ "AND (returnDate = ? OR 'EMPTY') AND (time = ? OR 'EMPTY')";
+			
+			
+			try{
+				// Connecting to mySql database
+				Class.forName("com.mysql.jdbc.Driver");
+				con = DriverManager.getConnection(url,user,password);
+				pst = con.prepareStatement(query);
+				pst.setInt(1,sourceid); 
+				pst.setInt(2,destinationid);
+				pst.setString(3,departingDate); 
+				pst.setString(4, time); 
+				rs = pst.executeQuery();
+				while(rs.next()){
+					System.out.print(rs.getInt(1) + " " + rs.getInt(2)); // THIS PART is the output from database rs.getInt is flightid
+				}
+				
+			}
+			catch(Exception e){
+				System.out.println(e);
+			}
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		public static void main(String[] args) {
 			//Jack
 			SearchFlight obj = new SearchFlight();
 			
+			//SearchDatabase(1,2,"a","b");
 			//show the frame
-			fr.setVisible(true);
+			//fr.setVisible(true);
 			//set the size of the frame
-			fr.setSize(300, 400);
-		}*/
+			//fr.setSize(300, 400);
+		}
 
 		public void actionPerformed(ActionEvent e1) {
 			if(e1.getSource() == button) {
