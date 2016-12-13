@@ -45,7 +45,7 @@ public class NewSearchFlight {
 				}
 			}
 		});
-	
+	/*
 		JTable jt = new JTable();
 		DefaultTableModel model = new DefaultTableModel();
 		String[] colName = new String[5];
@@ -81,7 +81,7 @@ public class NewSearchFlight {
         
         panel.add(pane,BorderLayout.CENTER);
         
-        window.setContentPane(panel);
+        window.setContentPane(panel);*/
 	
 	}
 
@@ -145,7 +145,50 @@ public class NewSearchFlight {
 				String departingDate = textField_2.getText();
 				String time = textField_3.getText();
 				
-				FlightTable f = SearchDatabase(origin,destination,departingDate,time);
+				if(origin ==null && destination==null && departingDate ==null && time ==null){
+					getFlightTable();
+				}
+				
+				FlightTable find = SearchDatabase(origin,destination,departingDate,time);
+				
+
+				JTable jt = new JTable();
+				DefaultTableModel model = new DefaultTableModel();
+				String[] colName = new String[5];
+				
+				colName[0] = "flightnum";
+				colName[1] = "origin";
+				colName[2] = "destination";
+				colName[3] = "departing date";
+				colName[4] = "time";
+				
+				model.setColumnIdentifiers(colName);
+				
+				Object[] rowData = new Object[5];
+				
+				for(int i = 0; i < 1.;i++){
+					rowData[0] = find.getFlightnum();
+					rowData[1] = find.getOrigin();
+					rowData[2] = find.getDestination();
+					rowData[3] = find.getDepartingDate();
+					rowData[4] = find.getTime();
+					model.addRow(rowData);
+				}
+				
+				jt.setModel(model);
+		        
+		        Work window = new Work();
+		        
+		        JPanel panel = new JPanel();
+		        
+		        panel.setLayout(new BorderLayout());
+		        
+		        JScrollPane pane = new JScrollPane(jt);
+		        
+		        panel.add(pane,BorderLayout.CENTER);
+		        
+		        window.setContentPane(panel);
+				
 				
 				
 			}
@@ -172,6 +215,7 @@ public class NewSearchFlight {
 	}
 	
 	
+	
 	public static FlightTable SearchDatabase(String origin, String destination, String departingDate, String time) {
 		// Initialization of database components
 		Connection con;
@@ -195,11 +239,12 @@ public class NewSearchFlight {
 			pst.setString(3,departingDate); 
 			pst.setString(4, time); 
 			rs = pst.executeQuery();
+			if(rs.next()){
 			FlightTable ftable = new FlightTable(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
 			
 			
 			return ftable;
-			
+			}
 			//while(rs.next()){
 			//	System.out.print(rs.getString(1) + " " + rs.getString(2)); // THIS PART is the output from database rs.getInt is flightid
 			//}
@@ -317,6 +362,8 @@ public class NewSearchFlight {
 	        setVisible(true);
 	    }
 	}
+	
+	
 	
 	
 	
