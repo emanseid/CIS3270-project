@@ -1,7 +1,7 @@
-package project.cis3270.searchflight;
+//package project.cis.test;
 import javax.swing.*;
 
-import project.cis3270.searchflight.NewUserRegistration.NewUserListener;
+//import project.cis.test.NewUserRegistration.NewUserListener;
 
 import java.awt.event.*;
 
@@ -45,13 +45,20 @@ public class Menu extends NewUserRegistration implements ActionListener{
 	 //event handling for Search flight
 	 public void actionPerformed(ActionEvent e1) {
 		 if(e1.getSource() == search) {
-			SearchFlight obj = new SearchFlight(); 
-			panel.add(obj);
+			NewSearchFlight obj = new NewSearchFlight(); 
+			NewSearchFlight.frame.setVisible(true);
+			NewSearchFlight.frame.setLocationRelativeTo(null);
+			NewSearchFlight.frame.setSize(500,400);
+			dispose();
+			
 		 }
 		 //event handling for booking
 		 else if(e1.getSource() == booking) {
 				Booking obj = new Booking(); 
 				panel.add(obj);
+				fr.setSize(600,700);
+				fr.setLocationRelativeTo(null);
+				
 			 }
 		
 			 
@@ -62,6 +69,7 @@ public class Menu extends NewUserRegistration implements ActionListener{
 		 Menu obj = new Menu();
 		fr.setVisible(true);
 		fr.pack();
+		fr.setLocationRelativeTo(null);
 	}
 
 }
