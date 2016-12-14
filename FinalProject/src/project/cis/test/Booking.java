@@ -1,5 +1,4 @@
-package project.cis3270.searchflight;
-
+package project.cis.test;
 import javax.swing.*;
 
 import java.awt.*;
@@ -119,9 +118,10 @@ public class Booking extends JPanel implements ActionListener{
 		if (e.getSource() == button1) {
 			
 			Ticket2 obj = new Ticket2();
-			obj.showTicketing();
 			fr.setVisible(false);
-			fr.dispose();
+			obj.showTicketing();
+			
+			
 			
 		}
 	}	
