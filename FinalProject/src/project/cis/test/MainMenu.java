@@ -1,5 +1,7 @@
-package project.cis3270.searchflight;
+package project.cis.test;
 import javax.swing.*;
+
+import java.awt.Font;
 import java.awt.event.*;
 
 public class MainMenu extends UserLogin implements ActionListener {
@@ -8,7 +10,6 @@ public class MainMenu extends UserLogin implements ActionListener {
 	 JMenuBar mb;
 	 JMenu m;
 	 JMenuItem  Login;
-	 
 	public MainMenu(){ 
 	 fr = new JFrame();
 	 // creating the menu bar
@@ -53,9 +54,9 @@ public class MainMenu extends UserLogin implements ActionListener {
 	 }
 	 public static void main(String[] args) {
 		MainMenu obj = new MainMenu();
-		
 		fr.setVisible(true);
 		fr.pack();
+		fr.setLocationRelativeTo(null);
 	}
 
 }
