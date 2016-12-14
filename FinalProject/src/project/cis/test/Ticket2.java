@@ -1,4 +1,4 @@
-package project.cis3270.searchflight;
+package project.cis.test;
 import javax.swing.*;
 import java.awt.*;
 public class Ticket2 {
@@ -87,12 +87,15 @@ public class Ticket2 {
 			    gc.anchor = align;
 			    p.add(c, gc);
 			  }
-			public static void main(String[] args) {
+			
+			public void showTicketing(){
 				Ticket2 obj = new Ticket2();
 				// show the frame
 				fr.setVisible(true);
 				// set the size of the frame
 				fr.setSize(300, 400);
+				fr.setLocationRelativeTo(null);
 			}
+			
 
 }
