@@ -1,4 +1,4 @@
-//package project.cis3270.searchflight;
+package project.cis.test;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,6 +14,7 @@ import javax.swing.border.*;
 
 
 public class NewUserRegistration extends JFrame {
+	
 		//Create Font
 		Font myFont = new Font("Monospaced",Font.PLAIN, 20);
 		// Create text fields for registration
@@ -105,9 +106,9 @@ public class NewUserRegistration extends JFrame {
 			Connection con;
 			PreparedStatement pst;
 			ResultSet rs;
-			String url = "jdbc:mysql://localhost:3306/JEB";
+			String url = "jdbc:mysql://localhost:3306/jeb";
 			String user = "root";
-			String password = "root";
+			String password = "May121992";
 			String query = "INSERT INTO users "
 					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			try{
@@ -134,15 +135,11 @@ public class NewUserRegistration extends JFrame {
 			}finally{
 				
 			   }
-			
-			
-			
-			
-//if username in system
+
 			
 			if(checkEmail(email)){}
-			else{JOptionPane.showMessageDialog(null,"Email invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
-			
+			else{JOptionPane.showMessageDialog(null,"Email invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);
+			}
 			if(checkZip(zip)){}
 			else{JOptionPane.showMessageDialog(null,"Zip Code invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
 			
@@ -151,8 +148,20 @@ public class NewUserRegistration extends JFrame {
 			
 			if(checkPassword(password)){}
 			else{JOptionPane.showMessageDialog(null,"Password must be more than 8 characters \nNo special characters","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
+			
 			if(checkSSN(SSN)){}
 			else{JOptionPane.showMessageDialog(null,"SSN invalid!","Java JEB Airlines",JOptionPane.INFORMATION_MESSAGE);}
+			
+			if(checkEmail(email) && checkZip(zip) && checkState(state) && checkPassword(password) && checkSSN(SSN)){
+			UserLogin frame = new UserLogin();
+			frame.pack();
+			frame.setSize(500, 200);
+		    frame.setTitle("Java JEB Airlines");
+		    frame.setLocationRelativeTo(null); // Center the frame
+		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    frame.setVisible(true);
+			dispose();
+			}
 		}
 		public boolean checkEmail(String email){
 			String email1 = jtfEmail.getText();
@@ -250,6 +259,10 @@ public class NewUserRegistration extends JFrame {
 				return true;
 			}else{return false;}
 		}
+		
+		
+		
+		
 		}
 	 
 	 
@@ -263,8 +276,7 @@ public class NewUserRegistration extends JFrame {
 		    frame.setLocationRelativeTo(null); // Center the frame
 		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    frame.setVisible(true);
+		    
+		    
 		  }
 	}
-
-
-
