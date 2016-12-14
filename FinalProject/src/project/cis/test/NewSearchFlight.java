@@ -1,3 +1,4 @@
+package project.cis.test;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -23,7 +24,7 @@ import java.awt.event.ActionEvent;
 
 public class NewSearchFlight {
 
-	private JFrame frame;
+	static JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -95,7 +96,7 @@ public class NewSearchFlight {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	 void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -223,7 +224,7 @@ public class NewSearchFlight {
 		ResultSet rs;
 		String url = "jdbc:mysql://localhost:3306/JEB";
 		String user = "root";
-		String password = "root";
+		String password = "May121992";
 		String query = "select origin,destination,departingDate,time from flight where (origin = ? OR destination = ? OR departingDate = ? OR time = ?)";
 				//+ "AND (destination = ? ) AND (departingDate = ? )"
 				//+ "AND (time = ? )";
@@ -323,7 +324,7 @@ public class NewSearchFlight {
         FlightTable ftable;
         String url = "jdbc:mysql://localhost:3306/JEB";
     	String user = "root";
-    	String password = "root";
+    	String password = "May121992";
         try {
         	
         	con = DriverManager.getConnection(url,user,password);
