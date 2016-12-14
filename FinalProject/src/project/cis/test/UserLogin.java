@@ -1,11 +1,11 @@
-//package project.cis3270.searchflight;
-
-
+//package project.cis.test;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
+
+//import project.cis.test.Menu;
 
 
 public class UserLogin extends JFrame{
@@ -56,6 +56,7 @@ public class UserLogin extends JFrame{
       String username = jtfUsername.getText();
       String password = jtfPassword.getText();
       
+      
       // JACK: check database to see if entered username and password are in the database & correct
       //I will write the GUI for that
       Database db = new Database();
@@ -63,10 +64,17 @@ public class UserLogin extends JFrame{
       if(db.checkLogin(username,password)){
     	  // Login successful popup
     	  JOptionPane.showMessageDialog(null,"Login Successful!","Login Successful",JOptionPane.INFORMATION_MESSAGE);
+      
+    	Menu obj = new Menu();
+  		Menu.fr.setVisible(true);
+  		Menu.fr.pack();
+  		Menu.fr.setLocationRelativeTo(null);
+  		dispose();
       }
       else{
     	  // Login unsuccessful popup
     	  JOptionPane.showMessageDialog(null,"Login Failed!","Login Failed",JOptionPane.ERROR_MESSAGE);
+    	  
       }
       
       
@@ -97,7 +105,6 @@ public class UserLogin extends JFrame{
     frame.setLocationRelativeTo(null); // Center the frame
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
+    
   }
 }
-
-
